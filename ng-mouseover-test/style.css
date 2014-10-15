@@ -1,0 +1,90 @@
+body{
+	width: 100%;
+	height: 100%;
+}
+
+#box{
+	width: 330px;
+	height: 330px;
+	position: absolute;
+	margin: auto;
+	top: 0; right: 0; bottom: 0; left: 0;
+}
+
+
+
+/*aVar = 1*/
+.unclicked{
+	display:inline-block;
+	height: 100px;
+	width: 100px;
+	border-radius: 25px;
+	background-color: gray;
+}
+
+.unclicked:hover{
+
+	transform: scale(1.4,1.4);
+	transition: all .16s ease-in-out;
+}
+
+
+
+/*aVar = 2*/
+.unclickedRedsTurn{
+	display:inline-block;
+	height: 100px;
+	width: 100px;
+	border-radius: 25px;
+	background-color: gray;
+}
+
+.unclickedRedsTurn:hover{
+	transform: scale(1.4,1.4);
+	transition: all .16s ease-in-out;
+	background-color: red;
+}
+
+/*aVar = 3*/
+.unclickedBluesTurn{
+	display:inline-block;
+	height: 100px;
+	width: 100px;
+	border-radius: 25px;
+	background-color: gray;
+}
+
+.unclickedBluesTurn:hover{
+
+	transform: scale(1.4,1.4);
+	transition: all .16s ease-in-out;
+	background-color: blue;
+}
+
+/*aVar = 4*/
+.clickedRed{
+	display:inline-block;
+	height: 100px;
+	width: 100px;
+	border-radius: 25px;
+	background-color: red;
+}
+
+.clickedRed:hover{
+	transform: scale(1,1);
+	background-color: red;
+}
+
+/*aVar = 5*/
+.clickedBlue{
+	display:inline-block;
+	height: 100px;
+	width: 100px;
+	border-radius: 25px;
+	background-color: blue;
+}
+
+.clickedBlue:hover{
+	transform: scale(1,1);
+	background-color: blue;
+}

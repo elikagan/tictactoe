@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="MouseOverTestApp">
+<head>
+<title>Mouse over test</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+<div ng-controller="MOTAController">
+
+	<div id="box">
+	    <div ng-repeat="currentCell in cellList" ng-click="playerPicks(currentCell)" ng-class="{
+	    unclickedRedsTurn: currentCell.status== 'G',
+	    unclickedBluesTurn: currentCell.status== 'H',
+	    clickedRed: currentCell.goPin == 'D', clickedBlue: currentCell.goPin == 'E'
+	    }"> "Status: {{currentCell.status}} <br>goPin {{currentCell.goPin}}<br>holdstatus{{currentCell.holdStatus}}<br>IsClicked
+	    {{currentCell.isClicked}}
+
+	    </div>
+	</div>
+
+
+
+
+
+</div>
+</body>
