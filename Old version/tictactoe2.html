@@ -43,33 +43,85 @@ var tile8 = 0;
 var tile9 = 0;
 var gameOver = 0;
 
-///////WIN CONDITIONS
-var checkUserWin = function() {
+///Attempt to combine all win funcs
+var checkWinOrTie = function() {
 
- if ((tile1===1 && tile2===1 && tile3===1) || (tile4===1 && tile5===1 && tile6===1) || (tile7===1 && tile8===1 && tile9===1) || (tile1===1 && tile4===1 && tile7===1) || (tile2===1 && tile5===1 && tile8===1) || (tile3===1 &&tile6===1 && tile9===1) || (tile1===1 && tile5===1 && tile9===1) || (tile7===1 && tile5===1 && tile3===1)) {
-		gameOver = 1;
-		document.getElementById("board").style.opacity="0.1";
-		document.getElementById("headline").innerHTML = "X's WIN!!!";
-		document.getElementById("playAgain").style.visibility="visible";
-	}	
-}
+	for (pOrC = 1; pOrC < 3; pOrC++){ 
+		if ((tile1===pOrC && tile2===pOrC && tile3===pOrC) || (tile4===pOrC && tile5===pOrC && tile6===pOrC) || (tile7===pOrC && tile8===pOrC && tile9===pOrC) || (tile1===pOrC && tile4===pOrC && tile7===pOrC) || (tile2===pOrC && tile5===pOrC && tile8===pOrC) || (tile3===pOrC &&tile6===pOrC && tile9===pOrC) || (tile1===pOrC && tile5===pOrC && tile9===pOrC) || (tile7===pOrC && tile5===pOrC && tile3===pOrC)) {
+			gameOver = 1;
+			document.getElementById("board").style.opacity="0.1";
+			document.getElementById("playAgain").style.visibility="visible";
+			if(pOrC == 1){
+				document.getElementById("headline").innerHTML = "X's WIN!!!";
+			};
+			if (pOrC == 2){
+				document.getElementById("headline").innerHTML = "O's WIN!!!";
+			};
+		}
+	}
 
-var checkCpuWin = function() {
-if ((tile1===2 && tile2===2 && tile3===2) || (tile4===2 && tile5===2 && tile6===2) || (tile7===2 && tile8===2 && tile9===2) || (tile1===2 && tile4===2 && tile7===2) || (tile2===2 && tile5===2 && tile8===2)  || (tile3===2 &&tile6===2 && tile9===2 )|| (tile1===2 && tile5===2 && tile9===2 )||(tile7===2 && tile5===2 && tile3===2 )) {
-		gameOver = 1;
-		document.getElementById("board").style.opacity="0.1";
-		document.getElementById("headline").innerHTML = "O's WIN!!!";
-		document.getElementById("playAgain").style.visibility="visible";
-	}	
-}
-
-var checkTie = function(){
 	if(counter == 11 && gameOver==0){
-		document.getElementById("board").style.opacity="0.3";
-		document.getElementById("headline").innerHTML = "It's a tie!";
-		document.getElementById("playAgain").style.visibility="visible";
+			document.getElementById("headline").innerHTML = "IT'S A TIE!!!";
+			document.getElementById("board").style.opacity="0.1";
+			document.getElementById("playAgain").style.visibility="visible";
+			};
+}
+
+
+///TILE 1 CLICK INSTRUCTIONS + MOUSEOVER OUT CONSOLIDATION
+
+document.getElementById("tileDiv1").addEventListener("click", click1);
+	
+function click1() {
+if(tile1===0 && counter%2==0 && gameOver != 1){
+	document.getElementById("tileDiv1").innerHTML = "X";
+	tile1 = 1;
+	counter = counter +1;
+	checkWinOrTie();
+
+	}
+
+else if (tile1===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv1").innerHTML = "O";
+	tile1 = 2;
+	counter = counter +1;
+	checkWinOrTie();
+
 	}
 }
+document.getElementById("tileDiv1").addEventListener("mouseover", myMouseOverTile1);
+
+function myMouseOverTile1() {
+	if(counter%2==0 && gameOver != 1 && tile1 ==0){
+	document.getElementById("tileDiv1").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile1 ==0){
+	document.getElementById("tileDiv1").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv1").addEventListener("mouseout", myMouseOutTile1);
+
+function myMouseOutTile1() {
+	if(gameOver != 1 && tile1 == 0){
+	document.getElementById("tileDiv1").innerHTML =" ";
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ///TILE 1 CLICK INSTRUCTIONS
@@ -81,9 +133,7 @@ if(tile1===0 && counter%2==0 && gameOver != 1){
 	document.getElementById("tileDiv1").innerHTML = "X";
 	tile1 = 1;
 	counter = counter +1;
-	tile1 = 1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -91,8 +141,7 @@ else if (tile1===0 && counter%2!==0 && gameOver != 1){
 	document.getElementById("tileDiv1").innerHTML = "O";
 	tile1 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -105,8 +154,7 @@ if(tile2===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv2").innerHTML = "X";
 	tile2 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -114,8 +162,7 @@ if(tile2===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv2").innerHTML = "O";
 	tile2 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -129,8 +176,7 @@ if(tile3===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv3").innerHTML = "X";
 	tile3 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -138,8 +184,7 @@ if(tile3===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv3").innerHTML = "O";
 	tile3 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -153,8 +198,7 @@ if(tile4===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv4").innerHTML = "X";
 	tile4 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -162,9 +206,7 @@ if(tile4===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv4").innerHTML = "O";
 	tile4 = 2;
 	counter = counter +1;
-	checkTie();
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -178,8 +220,7 @@ if(tile5===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv5").innerHTML = "X";
 	tile5 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -187,8 +228,7 @@ if(tile5===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv5").innerHTML = "O";
 	tile5 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -202,8 +242,7 @@ if(tile6===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv6").innerHTML = "X";
 	tile6 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -211,8 +250,7 @@ if(tile6===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv6").innerHTML = "O";
 	tile6 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -226,8 +264,7 @@ if(tile7===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv7").innerHTML = "X";
 	tile7 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -235,8 +272,7 @@ if(tile7===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv7").innerHTML = "O";
 	tile7 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -250,8 +286,7 @@ if(tile8===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv8").innerHTML = "X";
 	tile8 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -259,8 +294,7 @@ if(tile8===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv8").innerHTML = "O";
 	tile8 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }
@@ -275,8 +309,7 @@ if(tile9===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv9").innerHTML = "X";
 	tile9 = 1;
 	counter = counter +1;
-	checkUserWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 
@@ -284,8 +317,7 @@ if(tile9===0 && counter%2==0  && gameOver != 1){
 	document.getElementById("tileDiv9").innerHTML = "O";
 	tile9 = 2;
 	counter = counter +1;
-	checkCpuWin();
-	checkTie();
+	checkWinOrTie();
 
 	}
 }

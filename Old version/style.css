@@ -31,11 +31,10 @@ body{
 
 }
 
-#board:hover{
+/*#board:hover{
   	transform: scale(1.2,1.2);
-	transform: rotate(-5deg);
 	transition: all .16s ease-in-out; 	
-}
+}*/
 
 
 /*#logo{

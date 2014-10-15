@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="TTTApp">
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+    <script src="main.js"></script>
+</head>
+<body>
+
+<div id="backgroundBox"></div>
+
+    <div ng-controller="TTTController">
+        <div id="ticTacToeContainer">
+            <p class="ticTacToe">TIC TAC TOE</p>
+        </div>
+        <div class="gameOverContainer" ng-hide="myVar">
+            <p class="headline">{{statusHeadline}}</p>
+            <div id="horizRule"></div> 
+            <div class="playAgain" ng-click="resetAll(); toggle();" ng-hide="myVar">
+                <p id="playText"> PLAY AGAIN!</p>
+             </div>
+        </div>
+        <div id="theBoxContainer">
+            <div class="theBox" > 
+                <div ng-repeat="currentCell in cellList" id="mouseHoverId" class="allCellsAlways" ng-click="playerPicks(currentCell)" ng-class="{xclass: currentCell.status=='X', oclass: currentCell.status =='O', xclassClicked: currentCell.goPin == 'X', oclassClicked: currentCell.goPin == 'O', xclassHover: currentCell.hoverPin == 'X'  }" ng-mouseenter="hoverHandlerIn($event)"
+                ng-mouseout="hoverHandlerOut($event)">
+                </div>
+            </div>
+        </div>
+        <div class="winCountXContainer">
+            <div class="winCountX">{{winCount[0].wins}}
+            </div>
+        </div>
+        <div id="horizBotLeft"><div>
+        <div id="winTallyContainer">
+            <p class="winTally">WIN TALLY</p>
+        </div>
+        <div id="horizBotRight"><div>
+        <div class="winCountOContainer">
+            <div class="winCountO">{{winCount[1].wins}}
+             </div>
+
+         </div>
+         
+    </div>
+
+
+</body>
+</html>

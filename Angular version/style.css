@@ -1,0 +1,277 @@
+@font-face { font-family: Futura; src: url('Futura.ttc'); }
+
+body{
+  background-color: #e4b484;
+  width: 100%;
+  height: 100%;
+  letter-spacing: 3px;
+}
+
+#ticTacToeContainer{
+  position:absolute;
+  text-align: center;
+  display: inline-block;
+  top: -1%;
+  width: 28%;
+  left: 36%;
+  z-index: -10;
+  background-color: #e4b484;
+
+}
+
+#backgroundBox{
+  position: absolute;
+  left: 4%;
+  top: 11%;
+  bottom: 5%;
+  right: 4%;
+  width: 92%;
+  height: 81%;
+  border: 1px solid #755b46;
+  border-radius: 25px;
+  z-index: -20;
+}
+
+.ticTacToe{
+  font-size: 50px;
+  font-family: 'futura';
+  color: #755b46;
+
+}
+
+.gameOverContainer{
+  margin: auto;
+  position: absolute;
+  top: 4%; left: 0%; bottom: 0%; right: 0%;
+  width: 800px;
+  height: 300px;
+  background-color: rgba(228, 180, 132, .9);
+  border: 2px solid #755b46;
+  z-index: 101;
+  box-shadow: 0px 0px 0px 12px rgba(239,187,129,1);
+      -webkit-animation: fadeIn .5s 1;
+    -moz-animation:    fadeIn .5s 1;
+    -o-animation:      fadeIn .5s 1;
+    animation:         fadeIn .5s 1;
+
+}
+
+.headline{
+position: relative;
+top: -84px;
+font-size: 100px;
+font-family: 'Futura';
+color: #0a5b7f;
+text-align: center;
+letter-spacing: 5px;
+}
+
+#horizRule{
+  height: 1px;
+  background-color: #755b46;
+  width: 744px;
+  position: absolute;
+  left: 30px;
+  top:54%;
+}
+
+.playAgain {
+  position: relative;
+  top: -128px;
+  left: 278px;
+  width: 250px;
+  height: 60px;
+  background-color: #0a5b7f;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+    transition: all .16s ease-in-out;
+
+}
+
+.playAgain:hover{
+  transform: scale(1.1,1.1);
+  transition: all .16s ease-in-out;
+}
+
+#playText{
+ margin: auto;
+  position: absolute;
+  top: 21%; left: 0; bottom: 0; right: 0;
+ font-size: 26px;
+ color: white;
+ font-family: 'Futura';
+    letter-spacing: 0px;
+
+}
+
+#theBoxContainer {
+  height: 100%;
+  width: 100%;
+
+
+}
+
+.theBox {
+  height: 450px;
+  width: 450px;
+  margin: auto;
+  position: absolute;
+  top: 5%; left: 0; bottom: 0; right: 0;
+}
+
+
+
+.allCellsAlways {
+  cursor: pointer;
+  width: 60px;
+	height: 60px;
+	display: inline-block;
+  float: left;
+  margin: 30px ;
+  padding: 0px ;
+  border: 14px solid #e4b484;
+  border-radius: 100px;
+  background-color: #efbb81;
+  box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
+  transition: all .1s ease-in-out;
+
+}
+
+.allCellsAlways:hover {
+    background-color: #efbb81;
+    transform: scale(1.4,1.4);
+    transition: all .16s ease-in-out; 
+}
+
+.xclass {
+    background-color: #ba5b36 ;
+    border: 14px solid #e4b484;
+
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 0px 0px 10px #ba5b36;
+    -webkit-animation: fadeIn .5s 1;
+    -moz-animation:    fadeIn .5s 1;
+    -o-animation:      fadeIn .5s 1;
+    animation:         fadeIn .5s 1;
+}
+
+.xclassClicked{
+}
+
+.xclassClicked:hover{
+    background-color: #ba5b36;
+    transform: scale(1,1);
+    transition: all .16s ease-in-out;
+}
+
+.xclassHover{
+    background-color: #ba5b36;
+}
+
+.oclass {
+	background-color: #77896d ;
+  border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 10px #77896d;
+  height: 60px;
+  width: 60px;
+  -webkit-animation: fadeIn .5s 1;
+  -moz-animation:    fadeIn .5s 1;
+  -o-animation:      fadeIn .5s 1;
+  animation:         fadeIn .5s 1;
+}
+
+.oclassClicked{
+}
+
+.oclassClicked:hover{
+    background-color: #77896d;
+    transform: scale(1,1);
+    transition: all .16s ease-in-out
+}
+#winTallyContainer{
+  position:absolute;
+  bottom: 2%;
+  text-align: center;
+  display: inline-block;
+  width: 14%;
+  left: 43%;
+  z-index: -10;
+  background-color: #e4b484;
+
+}
+
+.winTally{
+  font-size: 26px;
+  font-family: 'futura';
+  color: #755b46;
+
+}
+
+.winCountXContainer{
+position: absolute;
+  left: 2%;
+  bottom: 5%;
+  width:50px;
+  height: 50px;
+  background-color: #ba5b36;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px 12px #e4b484;
+  text-align: center;
+
+
+
+}
+
+.winCountX{
+  margin: auto;
+  position: absolute;
+  top: 0%; left: 0; bottom: 0; right: 0;
+  font-size: 20px;
+  font-family: 'futura';
+  color: white;
+  margin-top: 10px;
+
+}
+
+.winCountOContainer{
+position: absolute;
+  right: 2%;
+  bottom: 5%;
+  width:50px;
+  height: 50px;
+  background-color: #77896d;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px 12px #e4b484;
+  text-align: center;
+
+
+}
+
+.winCountO{
+margin: auto;
+  position: absolute;
+  top: 0%; left: 0; bottom: 0; right: 0;
+  font-size: 20px;
+  font-family: 'futura';
+  color: white;
+  margin-top: 10px;
+}
+
+@-webkit-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
