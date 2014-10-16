@@ -128,11 +128,11 @@ letter-spacing: 5px;
 	height: 60px;
 	display: inline-block;
   float: left;
+  border-radius: 100px;
+  background-color: #efbb81;
   margin: 30px ;
   padding: 0px ;
   border: 14px solid #e4b484;
-  border-radius: 100px;
-  background-color: #efbb81;
   box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
   transition: all .1s ease-in-out;
 
@@ -146,10 +146,9 @@ letter-spacing: 5px;
 
 .xclass {
     background-color: #ba5b36 ;
-    border: 14px solid #e4b484;
-
     width: 60px;
     height: 60px;
+    border: 14px solid #e4b484;
     box-shadow: 0px 0px 0px 10px #ba5b36;
     -webkit-animation: fadeIn .5s 1;
     -moz-animation:    fadeIn .5s 1;
