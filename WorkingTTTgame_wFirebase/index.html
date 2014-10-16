@@ -1,0 +1,102 @@
+<!doctype html>
+<html ng-app="TicTacToeApp">
+
+<head>
+ 
+  <title>Eli's Tic Tac Toe</title>
+<!-- CSS -->   
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+
+<!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+<!-- Angular -->   
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
+
+<!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
+
+<!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+
+<!-- JS -->
+  <script src="main.js"></script>
+
+</head>
+
+
+<body>
+
+<!-- This div contains the background graphic with the border and curved edges -->
+  <div id="backgroundBox"></div>
+
+<!-- This div contains the controller for all the AngularJs logic -->
+  <div ng-controller="TTTController">
+   
+    <div id="ticTacToeContainer">
+      
+      <p class="ticTacToe">TIC TAC TOE</p>
+    
+    </div>
+    
+<!-- This is the game over board with the reset button  -->
+    <div class="gameOverContainer" ng-hide="gameContainer.FBmyVar" ng-class="{xWinBorder: gameContainer.FBwhoWon == 'X', oWinBorder: gameContainer.FBwhoWon == 'O'}" >
+      
+      <p class="headlineClass" ng-class="{xWins: gameContainer.FBwhoWon == 'X', oWins: gameContainer.FBwhoWon == 'O'}">{{gameContainer.FBstatusHeadline}}</p>
+
+      <div id="horizRule"></div>
+
+      <div class="playAgain" ng-click="resetAll(); toggle();" ng-hide="gameContainer.FBmyVar">
+
+        <p id="playText"> PLAY AGAIN!</p>
+      
+      </div>
+    
+    </div>
+
+<!-- This is the actual TTT board -->
+    <div id="theBoxContainer">
+      
+      <div id="box">
+        
+<!-- This is the logic that creates the board and controls the tile clicking styling logic. Note that in the ng-class directive, tStatus is used for unlcicked tile styling and goPin is used for clicked ones. -->
+        <div  ng-repeat="currentCell in gameContainer.FBcellList" ng-click="playerPicks(currentCell)" ng-class="{
+        unclickedRedsTurn: currentCell.tStatus== 'G',
+        unclickedBluesTurn: currentCell.tStatus== 'H',
+        clickedRed: currentCell.goPin == 'D', clickedBlue: currentCell.goPin == 'E'
+        }">
+    
+        </div>
+
+      </div>
+
+    </div>
+
+<!-- This is win counter stuff. -->
+    <div class="winCountXContainer" ng-class="{winCountContainerBig: gameContainer.FBmovecounter%2==0}">
+    
+      <div class="winCountX">{{gameContainer.FBwinCount[0].wins}}
+      
+      </div>
+    
+    </div>
+    
+    <div id="winTallyContainer">
+    
+      <p class="winTally">WIN TALLY</p>
+    
+    </div>
+
+    <div class="winCountOContainer" ng-class="{winCountContainerBig: gameContainer.FBmovecounter%2==1}">
+      
+      <div class="winCountO">{{gameContainer.FBwinCount[1].wins}}
+    
+      </div>
+    
+    </div>
+
+  </div>
+
+</body>
+
+</html>

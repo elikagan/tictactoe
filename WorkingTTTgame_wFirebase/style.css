@@ -1,0 +1,339 @@
+/*Note that throughout this css 'X' and 'Red' are synonomous as are 'O' and Blue. So I refer to "X's turn or "Red's" turn and mean the same thing.*/
+
+
+body{
+  background-color: #e4b484;
+  width: 100%;
+  height: 100%;
+  letter-spacing: 3px;
+  font-size: 30px;
+  font-family: 'Futura';
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+}
+
+/*Box containing "Tic Tac Toes"*/
+#ticTacToeContainer{
+  position:absolute;
+  text-align: center;
+  display: inline-block;
+  top: -.5%;
+  width: 360px;
+  left: 0%;
+  right: 0%;
+  margin: auto;
+  z-index: -10;
+  background-color: #e4b484;
+}
+
+/*The styling for the words "TTT"*/
+.ticTacToe{
+  font-size: 50px;
+  font-family: 'futura';
+  color: #755b46;
+}
+
+/*Styling for box around the perimeter of window with brown border*/
+#backgroundBox{
+  position: absolute;
+  left: 5%;
+  top: 11%;
+  bottom: 5%;
+  right: 5%;
+  width: 90%;
+  height: 81%;
+  border: 1px solid #755b46;
+  border-radius: 4px;
+  z-index: -20;
+}
+
+/*Container that houses the end of game stuff with headline and reset button*/
+.gameOverContainer{
+  margin: auto;
+  position: absolute;
+  top: 4%; left: 0%; bottom: 0%; right: 0%;
+  width: 800px;
+  height: 300px;
+  background-color: rgba(228, 180, 132, .9);
+  z-index: 101;
+  box-shadow: 0px 0px 0px 12px rgba(239,187,129,1);
+  border: 2px solid #755b46;
+  transition: all .16s ease-in-out;
+  -webkit-animation: fadeIn .7s 1;
+  -moz-animation:    fadeIn .7s 1;
+  -o-animation:      fadeIn .7s 1;
+  animation:         fadeIn .7s 1;
+}
+
+/*Border in gameOver Container is controlled by ng-class in html.*/
+.xWinBorder{
+  border: 2px solid #ba5b36;
+}
+
+.oWinBorder{
+  border: 2px solid #77896d;
+}
+
+/*Color / styling of the headline text*/
+.headlineClass{
+  position: relative;
+  top: -84px;
+  font-size: 100px;
+  font-family: 'Futura';
+  color: #755b46;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+/*Color headline text depending on who won as set by ng-class*/
+.xWins{
+	color: #ba5b36;
+}
+
+.oWins{
+	color: #77896d ;
+}
+
+#horizRule{
+  height: 1px;
+  background-color: #755b46;
+  width: 744px;
+  position: absolute;
+  left: 30px;
+  top:54%;
+}
+
+.playAgain {
+  cursor: pointer;
+  position: relative;
+  top: -128px;
+  left: 278px;
+  width: 250px;
+  height: 60px;
+  background-color: #0a5b7f;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: all .16s ease-in-out;
+
+}
+
+.playAgain:hover{
+
+  transform: scale(1.1,1.1);
+  transition: all .16s ease-in-out;
+}
+
+#playText{
+  margin: auto;
+  position: absolute;
+  top: 21%; left: 0; bottom: 0; right: 0;
+  font-size: 26px;
+  color: white;
+  font-family: 'Futura';
+  letter-spacing: 0px;
+}
+
+
+#theBoxContainer {
+  height: 100%;
+  width: 100%;
+}
+
+/*The TTT board itself*/
+#box{
+	width: 420px;
+	height: 420px;
+	position: absolute;
+	margin: auto;
+	top: 6%; right: 0; bottom: 0; left: 0;
+}
+
+/*Sets style of unclicked tiles when it's reds turn. Mostly what we want here is the hover state. If no hover is detected, the tile is blank*/
+.unclickedRedsTurn{
+  cursor: pointer;
+	display:inline-block;
+	height: 60px;
+	width: 60px;
+	border-radius: 50px;
+	background-color: #efbb81;
+	margin: 20px ;
+	border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
+  transition: all .16s ease-in-out;
+}
+
+.unclickedRedsTurn:hover{
+	transform: scale(1.2,1.2);
+	transition: all .16s ease-in-out;
+	background-color: #ba5b36;
+	border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 10px #ba5b36;
+  background-image: url('x_full_peach.png');
+  transition: all .16s ease-in-out;
+}
+
+/*Sets style of unclicked tiles when it's blues turn. Mostly what we want here is the hover state. If no hover is detected, the tile is blank*/
+.unclickedBluesTurn{
+  cursor: pointer;
+	display:inline-block;
+	height: 60px;
+	width: 60px;
+	border-radius: 50px;
+	background-color: #efbb81;
+	margin: 20px ;
+	border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
+  transition: all .16s ease-in-out;
+}
+
+.unclickedBluesTurn:hover{
+	transform: scale(1.2,1.2);
+	transition: all .16s ease-in-out;
+	background-color: #77896d;
+	border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 10px #77896d;
+  background-image: url('o_full_peach.png');
+}
+
+/*Sets style of clicked Red tiles. Note that because this literally declared later in the file than the .unclickedRedsTurn class above, it has a specificity hierarchy advantage when both classes are applied to a given element in the DOM. This workaround allowed me to control the hover states of unclicked tiles with a for loop in the js while ensuring the clicked tiles stay static without hoverstates.*/
+.clickedRed{
+	display:inline-block;
+	height: 60px;
+	width: 60px;
+	border-radius: 50px;
+	background-color: #ba5b36;
+	margin: 20px ;
+	border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 4px #ba5b36;
+  background-image: url('x_full_peach.png');
+  transition: all .16s ease-in-out;
+}
+
+/*Note that the transform here is set to (1,1) i.e board doesn't change sides on hover. I set this to override the styling that is applied with the unclickRedsTurn class because both are applied at once in some cases. The specificity advantage here is because this is declared later in the css.*/
+
+.clickedRed:hover{
+  transform: scale(1,1);
+  background-color: #ba5b36;
+  border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 4px #ba5b36;
+  background-image: url('x_full_peach.png');
+}
+
+/*Sets style of clicked Blue tiles. Note that because this literally declared later in the file than the .unclickedBluesTurn class above, it has a specificity hierarchy advantage when both classes are applied to a given element in the DOM. This workaround allowed me to control the hover states of unclicked tiles with a for loop in the js while ensuring the clicked tiles stay static without hoverstates.*/
+.clickedBlue{
+	display:inline-block;
+	height: 60px;
+	width: 60px;
+	border-radius: 50px;
+	background-color: #77896d;
+	margin: 20px ;
+	border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 4px #77896d;
+  transition: all .1s ease-in-out;
+  background-image: url('o_full_peach.png');
+}
+
+/*Note that the transform here is set to (1,1) i.e board doesn't change sides on hover. I set this to override the styling that is applied with the unclickRedsTurn class because both are applied at once in some cases. The specificity advantage here is because this is declared later in the css.*/
+.clickedBlue:hover{
+	transform: scale(1,1);
+	background-color: #77896d;
+  border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 4px #77896d;
+  background-image: url('o_full_peach.png');
+}
+
+
+#winTallyContainer{
+  position:absolute;
+  bottom: 2%;
+  text-align: center;
+  display: inline-block;
+  width: 200px;
+  left: 0%;
+  right: 0%;
+  margin: auto;
+  z-index: -10;
+  background-color: #e4b484;
+
+}
+
+.winTally{
+  font-size: 26px;
+  font-family: 'futura';
+  color: #755b46;
+
+}
+
+/*X's win counter stuff*/
+.winCountXContainer{
+  position: absolute;
+  left: 3%;
+  bottom: 5%;
+  width:50px;
+  height: 50px;
+  background-color: #ba5b36;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px 12px #e4b484;
+  text-align: center;
+  transition: all .1s ease-in-out;
+}
+
+.winCountContainerBig{
+	transform: scale(1.2,1.2);
+	transition: all .1s ease-in-out;
+
+}
+
+.winCountX{
+  margin: auto;
+  position: absolute;
+  top: 3%; left: 3%; bottom: 0; right: 0;
+  font-size: 20px;
+  font-family: 'futura';
+  color: #efbb81;
+  margin-top: 10px;
+}
+/*O's win counter stuff*/
+.winCountOContainer{
+  position: absolute;
+  right: 3%;
+  bottom: 5%;
+  width:50px;
+  height: 50px;
+  background-color: #77896d;
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px 12px #e4b484;
+  text-align: center;
+  transition: all .1s ease-in-out;
+}
+
+.winCountO{
+  margin: auto;
+  position: absolute;
+  top: 3%; left: 3%; bottom: 0; right: 0;
+  font-size: 20px;
+  font-family: 'futura';
+  color: #efbb81;
+  margin-top: 10px;
+}
+
+/*This is the fade in animation used by gameOver container. */
+@-webkit-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-moz-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@-o-keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
