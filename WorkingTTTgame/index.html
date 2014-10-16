@@ -14,7 +14,7 @@
 	<div id="ticTacToeContainer">
         <p class="ticTacToe">TIC TAC TOE</p>
     </div>
-	<div class="gameOverContainer" ng-hide="myVar">
+	<div class="gameOverContainer" ng-hide="myVar" ng-class="{xWinBorder: whoWon == 'X', oWinBorder: whoWon == 'O'}" >
         <p class="headlineClass" ng-class="{xWins: whoWon == 'X', oWins: whoWon == 'O'}">{{statusHeadline}}</p>
         <div id="horizRule"></div> 
         <div class="playAgain" ng-click="resetAll(); toggle();" ng-hide="myVar">

@@ -3,31 +3,25 @@ body{
   width: 100%;
   height: 100%;
   letter-spacing: 3px;
+  font-size: 30px;
+font-family: 'Futura';
+vertical-align: middle;
+text-align: center;
+color: white;
 }
 
 #ticTacToeContainer{
   position:absolute;
   text-align: center;
   display: inline-block;
-  top: -1%;
-  width: 28%;
-  left: 36%;
+  top: -.5%;
+  width: 25%;
+  left: 0%;
+  right: 0%;
+  margin: auto;
   z-index: -10;
   background-color: #e4b484;
 
-}
-
-#backgroundBox{
-  position: absolute;
-  left: 4%;
-  top: 11%;
-  bottom: 5%;
-  right: 4%;
-  width: 92%;
-  height: 81%;
-  border: 1px solid #755b46;
-  border-radius: 25px;
-  z-index: -20;
 }
 
 .ticTacToe{
@@ -37,6 +31,20 @@ body{
 
 }
 
+#backgroundBox{
+  position: absolute;
+  left: 5%;
+  top: 11%;
+  bottom: 5%;
+  right: 5%;
+  width: 90%;
+  height: 81%;
+  border: 1px solid #755b46;
+  border-radius: 4px;
+  z-index: -20;
+}
+
+
 .gameOverContainer{
   margin: auto;
   position: absolute;
@@ -44,15 +52,25 @@ body{
   width: 800px;
   height: 300px;
   background-color: rgba(228, 180, 132, .9);
-  border: 2px solid #755b46;
   z-index: 101;
   box-shadow: 0px 0px 0px 12px rgba(239,187,129,1);
+    border: 2px solid #755b46;
+
   transition: all .16s ease-in-out;
   -webkit-animation: fadeIn .7s 1;
   -moz-animation:    fadeIn .7s 1;
   -o-animation:      fadeIn .7s 1;
   animation:         fadeIn .7s 1;
 }
+
+.xWinBorder{
+  border: 2px solid #ba5b36;
+}
+
+.oWinBorder{
+  border: 2px solid #77896d;
+}
+
 
 
 
@@ -61,7 +79,7 @@ position: relative;
 top: -84px;
 font-size: 100px;
 font-family: 'Futura';
-color: #0a5b7f;
+color: #755b46;
 text-align: center;
 letter-spacing: 5px;
 }
@@ -84,6 +102,7 @@ letter-spacing: 5px;
 }
 
 .playAgain {
+  cursor: pointer;
   position: relative;
   top: -128px;
   left: 278px;
@@ -98,6 +117,7 @@ letter-spacing: 5px;
 }
 
 .playAgain:hover{
+
   transform: scale(1.1,1.1);
   transition: all .16s ease-in-out;
 }
@@ -134,6 +154,7 @@ letter-spacing: 5px;
 
 /*aVar = 2*/
 .unclickedRedsTurn{
+  cursor: pointer;
 	display:inline-block;
 	height: 60px;
 	width: 60px;
@@ -142,7 +163,7 @@ letter-spacing: 5px;
   	margin: 30px ;
   	border: 14px solid #e4b484;
   box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
-      transition: all .16s ease-in-out
+      transition: all .16s ease-in-out;
 
 
 }
@@ -152,14 +173,14 @@ letter-spacing: 5px;
 	transition: all .16s ease-in-out;
 	background-color: #ba5b36;
 	border: 14px solid #e4b484;
-    box-shadow: 0px 0px 0px 10px #ba5b36;
-        transition: all .16s ease-in-out
-
-
+  box-shadow: 0px 0px 0px 10px #ba5b36;
+  background-image: url('x_full_peach.png');
+  transition: all .16s ease-in-out;
 }
 
 /*aVar = 3*/
 .unclickedBluesTurn{
+    cursor: pointer;
 	display:inline-block;
 	height: 60px;
 	width: 60px;
@@ -168,7 +189,7 @@ letter-spacing: 5px;
   	margin: 30px ;
   	border: 14px solid #e4b484;
   box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
-      transition: all .16s ease-in-out
+      transition: all .16s ease-in-out;
 
 
 }
@@ -180,11 +201,12 @@ letter-spacing: 5px;
 	background-color: #77896d;
 	border: 14px solid #e4b484;
   box-shadow: 0px 0px 0px 10px #77896d;
-
+ background-image: url('o_full_peach.png');
 }
 
 /*aVar = 4*/
 .clickedRed{
+
 	display:inline-block;
 	height: 60px;
 	width: 60px;
@@ -192,8 +214,10 @@ letter-spacing: 5px;
 	background-color: #ba5b36;
   	margin: 30px ;
   	border: 14px solid #e4b484;
-    box-shadow: 0px 0px 0px 10px #ba5b36;
+  box-shadow: 0px 0px 0px 4px #ba5b36;
+  background-image: url('x_full_peach.png');
  transition: all .16s ease-in-out;
+
 
 
 
@@ -202,6 +226,10 @@ letter-spacing: 5px;
 .clickedRed:hover{
 	transform: scale(1,1);
 	background-color: #ba5b36;
+  border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 4px #ba5b36;
+   background-image: url('x_full_peach.png');
+
 }
 
 /*aVar = 5*/
@@ -213,9 +241,10 @@ letter-spacing: 5px;
 	background-color: #77896d;
   	margin: 30px ;
   	border: 14px solid #e4b484;
-  box-shadow: 0px 0px 0px 10px #77896d;
+  box-shadow: 0px 0px 0px 4px #77896d;
 
-      transition: all .1s ease-in-out
+      transition: all .1s ease-in-out;
+       background-image: url('o_full_peach.png');
 
 
 }
@@ -223,6 +252,9 @@ letter-spacing: 5px;
 .clickedBlue:hover{
 	transform: scale(1,1);
 	background-color: #77896d;
+  border: 14px solid #e4b484;
+  box-shadow: 0px 0px 0px 4px #77896d;
+   background-image: url('o_full_peach.png');
 }
 
 
@@ -231,8 +263,10 @@ letter-spacing: 5px;
   bottom: 2%;
   text-align: center;
   display: inline-block;
-  width: 14%;
-  left: 43%;
+  width: 12%;
+  left: 0%;
+  right: 0%;
+  margin: auto;
   z-index: -10;
   background-color: #e4b484;
 
@@ -247,7 +281,7 @@ letter-spacing: 5px;
 
 .winCountXContainer{
 position: absolute;
-  left: 2%;
+  left: 3%;
   bottom: 5%;
   width:50px;
   height: 50px;
@@ -255,13 +289,13 @@ position: absolute;
   border-radius: 100px;
   box-shadow: 0px 0px 0px 12px #e4b484;
   text-align: center;
-  transition: all .1s ease-in-out
+  transition: all .1s ease-in-out;
 
   }
 
 .winCountContainerBig{
 	transform: scale(1.2,1.2);
-	transition: all .1s ease-in-out
+	transition: all .1s ease-in-out;
 
 }
 
@@ -271,14 +305,14 @@ position: absolute;
   top: 3%; left: 3%; bottom: 0; right: 0;
   font-size: 20px;
   font-family: 'futura';
-  color: white;
+  color: #efbb81;
   margin-top: 10px;
 
 }
 
 .winCountOContainer{
 position: absolute;
-  right: 2%;
+  right: 3%;
   bottom: 5%;
   width:50px;
   height: 50px;
@@ -286,7 +320,7 @@ position: absolute;
   border-radius: 100px;
   box-shadow: 0px 0px 0px 12px #e4b484;
   text-align: center;
-  transition: all .1s ease-in-out
+  transition: all .1s ease-in-out;
 
 
 }
@@ -298,7 +332,7 @@ margin: auto;
   top: 3%; left: 3%; bottom: 0; right: 0;
   font-size: 20px;
   font-family: 'futura';
-  color: white;
+  color: #efbb81;
   margin-top: 10px;
 }
 
