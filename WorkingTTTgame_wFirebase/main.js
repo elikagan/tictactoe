@@ -27,6 +27,7 @@ TicTacToeApp.controller('TTTController', function ($scope,$firebase) {
 	$scope.statusHeadline ="";
 	$scope.movecounter = 0;
 	$scope.whoWon ="";
+	$scope.whoWonV="";
 
 // WIN COUNT ARRAY - This array stores the win count.
 
@@ -42,6 +43,7 @@ TicTacToeApp.controller('TTTController', function ($scope,$firebase) {
 	FBmovecounter: $scope.movecounter,
 	FBwinCount: $scope.winCount,
 	FBwhoWon: $scope.whoWon,
+	FBwhoWon: $scope.whoWonV,
 	FBmyVar: $scope.myVar,
 	FBstatusHeadline: $scope.statusHeadline,
 	} ;
@@ -78,7 +80,7 @@ TicTacToeApp.controller('TTTController', function ($scope,$firebase) {
 	  {status: "H", tStatus: "G", goPin: "B", holdStatus: ''}, 
 	  {status: "I", tStatus: "G", goPin: "B", holdStatus: ''}
 	  ];
-	$scope.gameContainer.FBstatusHeadline = "";
+	console.log('All clear 2');
 	}
 
 
@@ -91,7 +93,7 @@ TicTacToeApp.controller('TTTController', function ($scope,$firebase) {
 				currentCell.holdStatus = 'X';
 				currentCell.status = 'X';
 				for (i=0; i< 9; i++){
-			        $scope.cellList[i].tStatus = 'H';
+			        $scope.gameContainer.FBcellList[i].tStatus = 'H';
 			    	currentCell.tStatus = "X";
 		        }
 		}
@@ -122,6 +124,7 @@ TicTacToeApp.controller('TTTController', function ($scope,$firebase) {
 	      if($scope.gameContainer.FBmovecounter % 2 == 1){
 	        $scope.gameContainer.FBstatusHeadline = "X WINS!!!";
 	        $scope.gameContainer.FBwhoWon='X';
+	        $scope.gameContainer.FBwhoWonV='X';
 	        $scope.gameContainer.FBwinCount[0].wins++;
 	        console.log($scope.gameContainer.FBwinCount[0]);
 	        $scope.toggle($scope.gameContainer.FBmyVar);    
@@ -132,6 +135,7 @@ TicTacToeApp.controller('TTTController', function ($scope,$firebase) {
 	      if($scope.gameContainer.FBmovecounter % 2 == 0){
 	        $scope.gameContainer.FBstatusHeadline = "O WINS!!!";
 	        $scope.gameContainer.FBwhoWon= 'O';
+	        $scope.gameContainer.FBwhoWonV= 'O';
 	        $scope.gameContainer.FBwinCount[1].wins++;
 	        console.log($scope.gameContainer.FBwinCount[1]);
 	        $scope.toggle($scope.gameContainer.FBmyVar);
@@ -146,6 +150,7 @@ TicTacToeApp.controller('TTTController', function ($scope,$firebase) {
 
 	  if($scope.gameContainer.FBmovecounter == 9 && $scope.gameContainer.FBwhoWon ==""){
 	      $scope.gameContainer.FBstatusHeadline = "IT'S A TIE.";
+	      $scope.gameContainer.FBwhoWonV= 'T';
 	      $scope.toggle($scope.gameContainer.FBmyVar);
 	  };
 	};
