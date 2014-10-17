@@ -7,7 +7,7 @@ body{
   height: 100%;
   letter-spacing: 3px;
   font-size: 30px;
-  font-family: 'Futura';
+  font-family: 'futura-pt', sans-serif;
   vertical-align: middle;
   text-align: center;
   color: white;
@@ -30,7 +30,7 @@ body{
 /*The styling for the words "TTT"*/
 .ticTacToe{
   font-size: 50px;
-  font-family: 'futura';
+  font-family: 'futura-pt', sans-serif;
   color: #755b46;
 }
 
@@ -82,7 +82,7 @@ body{
   position: relative;
   top: -84px;
   font-size: 100px;
-  font-family: 'Futura';
+  font-family: 'futura-pt', sans-serif;
   color: #755b46;
   text-align: center;
   letter-spacing: 5px;
@@ -137,7 +137,7 @@ body{
   top: 21%; left: 0; bottom: 0; right: 0;
   font-size: 26px;
   color: white;
-  font-family: 'Futura';
+  font-family: 'futura-pt', sans-serif;
   letter-spacing: 0px;
 }
 
@@ -278,7 +278,7 @@ body{
 
 .winTally{
   font-size: 26px;
-  font-family: 'futura';
+  font-family: 'futura-pt', sans-serif;
   color: #755b46;
 
 }
@@ -308,7 +308,7 @@ body{
   position: absolute;
   top: 3%; left: 3%; bottom: 0; right: 0;
   font-size: 20px;
-  font-family: 'futura';
+  font-family: 'futura-pt', sans-serif;
   color: #efbb81;
   margin-top: 10px;
 }
@@ -331,7 +331,7 @@ body{
   position: absolute;
   top: 3%; left: 3%; bottom: 0; right: 0;
   font-size: 20px;
-  font-family: 'futura';
+  font-family: 'futura-pt', sans-serif;
   color: #efbb81;
   margin-top: 10px;
 }
