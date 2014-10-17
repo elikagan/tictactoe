@@ -35,7 +35,7 @@ body{
 }
 
 /*Styling for box around the perimeter of window with brown border*/
-#backgroundBox{
+.backgroundBox{
   position: absolute;
   left: 5%;
   top: 11%;
@@ -47,6 +47,7 @@ body{
   border-radius: 4px;
   z-index: -20;
 }
+
 
 /*Container that houses the end of game stuff with headline and reset button*/
 .gameOverContainer{
@@ -60,6 +61,7 @@ body{
   box-shadow: 0px 0px 0px 12px rgba(239,187,129,1);
   border: 2px solid #755b46;
   transition: all .3s ease-in-out;
+  transform: scale(0,0);
 /*  -webkit-animation: fadeIn .7s 1;
   -moz-animation:    fadeIn .7s 1;
   -o-animation:      fadeIn .7s 1;
@@ -68,11 +70,11 @@ body{
 
 /*Border in gameOver Container is controlled by ng-class in html.*/
 .xWinBorder{
-  border: 2px solid #ba5b36;
+  border: 8px solid #ba5b36;
 }
 
 .oWinBorder{
-  border: 2px solid #77896d;
+  border: 8px solid #77896d;
 }
 
 /*Color / styling of the headline text*/
@@ -151,7 +153,7 @@ body{
 	height: 420px;
 	position: absolute;
 	margin: auto;
-	top: 6%; right: 0; bottom: 0; left: 0;
+	top: 3%; right: 0; bottom: 0; left: 0;
 }
 
 /*Sets style of unclicked tiles when it's reds turn. Mostly what we want here is the hover state. If no hover is detected, the tile is blank*/
@@ -162,10 +164,10 @@ body{
 	width: 60px;
 	border-radius: 50px;
 	background-color: #efbb81;
-	margin: 20px ;
+	margin: 25px ;
 	border: 14px solid #e4b484;
   box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
-  transition: all .16s ease-in-out;
+  transition: all .25s ease-in-out;
 }
 
 .unclickedRedsTurn:hover{
@@ -188,10 +190,10 @@ body{
 	width: 60px;
 	border-radius: 50px;
 	background-color: #efbb81;
-	margin: 20px ;
+	margin: 25px ;
 	border: 14px solid #e4b484;
   box-shadow: 0px 0px 0px 10px rgba(239,187,129,1);
-  transition: all .16s ease-in-out;
+  transition: all .25s ease-in-out;
 }
 
 .unclickedBluesTurn:hover{
@@ -213,11 +215,11 @@ body{
 	width: 60px;
 	border-radius: 50px;
 	background-color: #ba5b36;
-	margin: 20px ;
+	margin: 25px ;
 	border: 14px solid #e4b484;
-  box-shadow: 0px 0px 0px 4px #ba5b36;
+  box-shadow: 0px 0px 0px 10px #ba5b36;
   background-image: url('x_full_peach.png');
-  transition: all .25s ease-in-out;
+  transition: all .4s ease-in-out;
 }
 
 /*Note that the transform here is set to (1,1) i.e board doesn't change sides on hover. I set this to override the styling that is applied with the unclickRedsTurn class because both are applied at once in some cases. The specificity advantage here is because this is declared later in the css.*/
@@ -227,8 +229,10 @@ body{
   -webkit-transform: scale(1,1);
   background-color: #ba5b36;
   border: 14px solid #e4b484;
-  box-shadow: 0px 0px 0px 4px #ba5b36;
+  box-shadow: 0px 0px 0px 10px #ba5b36;
   background-image: url('x_full_peach.png');
+  transition: all .25s ease-in-out;
+
 }
 
 /*Sets style of clicked Blue tiles. Note that because this literally declared later in the file than the .unclickedBluesTurn class above, it has a specificity hierarchy advantage when both classes are applied to a given element in the DOM. This workaround allowed me to control the hover states of unclicked tiles with a for loop in the js while ensuring the clicked tiles stay static without hoverstates.*/
@@ -238,10 +242,10 @@ body{
 	width: 60px;
 	border-radius: 50px;
 	background-color: #77896d;
-	margin: 20px ;
+	margin: 25px ;
 	border: 14px solid #e4b484;
-  box-shadow: 0px 0px 0px 4px #77896d;
-  transition: all .25s ease-in-out;
+  box-shadow: 0px 0px 0px 10px #77896d;
+  transition: all .4s ease-in-out;
   background-image: url('o_full_peach.png');
 }
 
@@ -251,8 +255,10 @@ body{
   -webkit-transform: scale(1,1);
 	background-color: #77896d;
   border: 14px solid #e4b484;
-  box-shadow: 0px 0px 0px 4px #77896d;
+  box-shadow: 0px 0px 0px 10px #77896d;
   background-image: url('o_full_peach.png');
+  transition: all .25s ease-in-out;
+
 }
 
 
@@ -288,8 +294,8 @@ body{
   border-radius: 100px;
   box-shadow: 0px 0px 0px 12px #e4b484;
   text-align: center;
-  transition: all .1s ease-in-out;
-}
+/*  transition: all .4s ease-in-out;
+*/}
 
 .winCountContainerBig{
   -webkit-animation: animation 1000ms linear both;
@@ -317,8 +323,8 @@ body{
   border-radius: 100px;
   box-shadow: 0px 0px 0px 12px #e4b484;
   text-align: center;
-  transition: all .1s ease-in-out;
-}
+/*  transition: all .4s ease-in-out;
+*/}
 
 .winCountO{
   margin: auto;
@@ -369,73 +375,136 @@ transition: all .5s ease-in-out;
 
 
 
-/* Generated with Bounce.js. Edit at http://goo.gl/LhcchT */
+
+
+
+/* Generated with Bounce.js. Edit at http://goo.gl/pRvjPg */
 
 @-webkit-keyframes animation { 
   0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  3.333333% { -webkit-transform: matrix3d(1.14545, 0, 0, 0, 0, 1.18602, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.14545, 0, 0, 0, 0, 1.18602, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  6.666667% { -webkit-transform: matrix3d(1.29842, 0, 0, 0, 0, 1.40691, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.29842, 0, 0, 0, 0, 1.40691, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  10% { -webkit-transform: matrix3d(1.42774, 0, 0, 0, 0, 1.57226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.42774, 0, 0, 0, 0, 1.57226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  13.333333% { -webkit-transform: matrix3d(1.51897, 0, 0, 0, 0, 1.64684, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.51897, 0, 0, 0, 0, 1.64684, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  16.666667% { -webkit-transform: matrix3d(1.57044, 0, 0, 0, 0, 1.64088, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.57044, 0, 0, 0, 0, 1.64088, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  20% { -webkit-transform: matrix3d(1.58847, 0, 0, 0, 0, 1.58847, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.58847, 0, 0, 0, 0, 1.58847, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  23.333333% { -webkit-transform: matrix3d(1.58303, 0, 0, 0, 0, 1.52623, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.58303, 0, 0, 0, 0, 1.52623, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  26.666667% { -webkit-transform: matrix3d(1.56445, 0, 0, 0, 0, 1.47964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.56445, 0, 0, 0, 0, 1.47964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  30% { -webkit-transform: matrix3d(1.54137, 0, 0, 0, 0, 1.45863, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.54137, 0, 0, 0, 0, 1.45863, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  33.333333% { -webkit-transform: matrix3d(1.51985, 0, 0, 0, 0, 1.4603, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.51985, 0, 0, 0, 0, 1.4603, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  36.666667% { -webkit-transform: matrix3d(1.50322, 0, 0, 0, 0, 1.47507, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50322, 0, 0, 0, 0, 1.47507, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  40% { -webkit-transform: matrix3d(1.49261, 0, 0, 0, 0, 1.49261, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49261, 0, 0, 0, 0, 1.49261, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  43.333333% { -webkit-transform: matrix3d(1.48758, 0, 0, 0, 0, 1.50574, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.48758, 0, 0, 0, 0, 1.50574, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  46.666667% { -webkit-transform: matrix3d(1.48684, 0, 0, 0, 0, 1.51166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.48684, 0, 0, 0, 0, 1.51166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  50% { -webkit-transform: matrix3d(1.48881, 0, 0, 0, 0, 1.51119, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.48881, 0, 0, 0, 0, 1.51119, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  53.333333% { -webkit-transform: matrix3d(1.49207, 0, 0, 0, 0, 1.50702, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49207, 0, 0, 0, 0, 1.50702, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  56.666667% { -webkit-transform: matrix3d(1.49549, 0, 0, 0, 0, 1.50208, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49549, 0, 0, 0, 0, 1.50208, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  60% { -webkit-transform: matrix3d(1.49838, 0, 0, 0, 0, 1.49838, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49838, 0, 0, 0, 0, 1.49838, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  63.333333% { -webkit-transform: matrix3d(1.50042, 0, 0, 0, 0, 1.49672, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50042, 0, 0, 0, 0, 1.49672, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  66.666667% { -webkit-transform: matrix3d(1.50158, 0, 0, 0, 0, 1.49685, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50158, 0, 0, 0, 0, 1.49685, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  70% { -webkit-transform: matrix3d(1.50198, 0, 0, 0, 0, 1.49802, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50198, 0, 0, 0, 0, 1.49802, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  73.333333% { -webkit-transform: matrix3d(1.50186, 0, 0, 0, 0, 1.49941, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50186, 0, 0, 0, 0, 1.49941, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  76.666667% { -webkit-transform: matrix3d(1.50144, 0, 0, 0, 0, 1.50046, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50144, 0, 0, 0, 0, 1.50046, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  80% { -webkit-transform: matrix3d(1.50093, 0, 0, 0, 0, 1.50093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50093, 0, 0, 0, 0, 1.50093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  83.333333% { -webkit-transform: matrix3d(1.50044, 0, 0, 0, 0, 1.50089, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50044, 0, 0, 0, 0, 1.50089, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  86.666667% { -webkit-transform: matrix3d(1.50007, 0, 0, 0, 0, 1.50056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50007, 0, 0, 0, 0, 1.50056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  90% { -webkit-transform: matrix3d(1.49983, 0, 0, 0, 0, 1.50017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49983, 0, 0, 0, 0, 1.50017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  93.333333% { -webkit-transform: matrix3d(1.49972, 0, 0, 0, 0, 1.49987, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49972, 0, 0, 0, 0, 1.49987, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  96.666667% { -webkit-transform: matrix3d(1.49971, 0, 0, 0, 0, 1.49974, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49971, 0, 0, 0, 0, 1.49974, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  100% { -webkit-transform: matrix3d(1.5, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.5, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+  1.666667% { -webkit-transform: matrix3d(1.03903, 0, 0, 0, 0, 1.05745, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.03903, 0, 0, 0, 0, 1.05745, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  3.333333% { -webkit-transform: matrix3d(1.09612, 0, 0, 0, 0, 1.15203, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.09612, 0, 0, 0, 0, 1.15203, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  5% { -webkit-transform: matrix3d(1.15774, 0, 0, 0, 0, 1.24226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.15774, 0, 0, 0, 0, 1.24226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  6.666667% { -webkit-transform: matrix3d(1.2126, 0, 0, 0, 0, 1.29749, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2126, 0, 0, 0, 0, 1.29749, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.333333% { -webkit-transform: matrix3d(1.25308, 0, 0, 0, 0, 1.30616, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.25308, 0, 0, 0, 0, 1.30616, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  10% { -webkit-transform: matrix3d(1.27567, 0, 0, 0, 0, 1.27567, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.27567, 0, 0, 0, 0, 1.27567, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  11.666667% { -webkit-transform: matrix3d(1.2806, 0, 0, 0, 0, 1.22546, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2806, 0, 0, 0, 0, 1.22546, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  13.333333% { -webkit-transform: matrix3d(1.27101, 0, 0, 0, 0, 1.17756, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.27101, 0, 0, 0, 0, 1.17756, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  15% { -webkit-transform: matrix3d(1.25175, 0, 0, 0, 0, 1.14825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.25175, 0, 0, 0, 0, 1.14825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  16.666667% { -webkit-transform: matrix3d(1.22818, 0, 0, 0, 0, 1.14365, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.22818, 0, 0, 0, 0, 1.14365, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  18.333333% { -webkit-transform: matrix3d(1.20519, 0, 0, 0, 0, 1.15983, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20519, 0, 0, 0, 0, 1.15983, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  20% { -webkit-transform: matrix3d(1.18648, 0, 0, 0, 0, 1.18648, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.18648, 0, 0, 0, 0, 1.18648, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  21.666667% { -webkit-transform: matrix3d(1.17421, 0, 0, 0, 0, 1.21191, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.17421, 0, 0, 0, 0, 1.21191, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  23.333333% { -webkit-transform: matrix3d(1.16898, 0, 0, 0, 0, 1.22747, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.16898, 0, 0, 0, 0, 1.22747, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  25% { -webkit-transform: matrix3d(1.17009, 0, 0, 0, 0, 1.22991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.17009, 0, 0, 0, 0, 1.22991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  26.666667% { -webkit-transform: matrix3d(1.17592, 0, 0, 0, 0, 1.22132, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.17592, 0, 0, 0, 0, 1.22132, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  28.333333% { -webkit-transform: matrix3d(1.18446, 0, 0, 0, 0, 1.20718, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.18446, 0, 0, 0, 0, 1.20718, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  30% { -webkit-transform: matrix3d(1.19368, 0, 0, 0, 0, 1.19368, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19368, 0, 0, 0, 0, 1.19368, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  31.666667% { -webkit-transform: matrix3d(1.20188, 0, 0, 0, 0, 1.18542, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20188, 0, 0, 0, 0, 1.18542, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  33.333333% { -webkit-transform: matrix3d(1.20794, 0, 0, 0, 0, 1.18412, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20794, 0, 0, 0, 0, 1.18412, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  35% { -webkit-transform: matrix3d(1.21132, 0, 0, 0, 0, 1.18868, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.21132, 0, 0, 0, 0, 1.18868, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  36.666667% { -webkit-transform: matrix3d(1.21206, 0, 0, 0, 0, 1.19619, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.21206, 0, 0, 0, 0, 1.19619, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  38.333333% { -webkit-transform: matrix3d(1.21062, 0, 0, 0, 0, 1.20336, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.21062, 0, 0, 0, 0, 1.20336, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  40% { -webkit-transform: matrix3d(1.20774, 0, 0, 0, 0, 1.20774, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20774, 0, 0, 0, 0, 1.20774, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  41.666667% { -webkit-transform: matrix3d(1.20421, 0, 0, 0, 0, 1.20843, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20421, 0, 0, 0, 0, 1.20843, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  43.333333% { -webkit-transform: matrix3d(1.20078, 0, 0, 0, 0, 1.20601, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20078, 0, 0, 0, 0, 1.20601, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  45% { -webkit-transform: matrix3d(1.19798, 0, 0, 0, 0, 1.20202, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19798, 0, 0, 0, 0, 1.20202, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  46.666667% { -webkit-transform: matrix3d(1.19614, 0, 0, 0, 0, 1.19822, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19614, 0, 0, 0, 0, 1.19822, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  48.333333% { -webkit-transform: matrix3d(1.19536, 0, 0, 0, 0, 1.19589, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19536, 0, 0, 0, 0, 1.19589, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  50% { -webkit-transform: matrix3d(1.19553, 0, 0, 0, 0, 1.19553, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19553, 0, 0, 0, 0, 1.19553, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  51.666667% { -webkit-transform: matrix3d(1.1964, 0, 0, 0, 0, 1.19681, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1964, 0, 0, 0, 0, 1.19681, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  53.333333% { -webkit-transform: matrix3d(1.19768, 0, 0, 0, 0, 1.19893, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19768, 0, 0, 0, 0, 1.19893, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  55% { -webkit-transform: matrix3d(1.19905, 0, 0, 0, 0, 1.20095, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19905, 0, 0, 0, 0, 1.20095, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  56.666667% { -webkit-transform: matrix3d(1.20028, 0, 0, 0, 0, 1.20218, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20028, 0, 0, 0, 0, 1.20218, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  58.333333% { -webkit-transform: matrix3d(1.20119, 0, 0, 0, 0, 1.20237, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20119, 0, 0, 0, 0, 1.20237, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  60% { -webkit-transform: matrix3d(1.20169, 0, 0, 0, 0, 1.20169, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20169, 0, 0, 0, 0, 1.20169, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  61.666667% { -webkit-transform: matrix3d(1.2018, 0, 0, 0, 0, 1.20057, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2018, 0, 0, 0, 0, 1.20057, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  63.333333% { -webkit-transform: matrix3d(1.20159, 0, 0, 0, 0, 1.1995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20159, 0, 0, 0, 0, 1.1995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  65% { -webkit-transform: matrix3d(1.20116, 0, 0, 0, 0, 1.19884, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20116, 0, 0, 0, 0, 1.19884, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  66.666667% { -webkit-transform: matrix3d(1.20063, 0, 0, 0, 0, 1.19874, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20063, 0, 0, 0, 0, 1.19874, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  68.333333% { -webkit-transform: matrix3d(1.20012, 0, 0, 0, 0, 1.1991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20012, 0, 0, 0, 0, 1.1991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  70% { -webkit-transform: matrix3d(1.1997, 0, 0, 0, 0, 1.1997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1997, 0, 0, 0, 0, 1.1997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  71.666667% { -webkit-transform: matrix3d(1.19942, 0, 0, 0, 0, 1.20027, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19942, 0, 0, 0, 0, 1.20027, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  73.333333% { -webkit-transform: matrix3d(1.19931, 0, 0, 0, 0, 1.20061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19931, 0, 0, 0, 0, 1.20061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  75% { -webkit-transform: matrix3d(1.19933, 0, 0, 0, 0, 1.20067, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19933, 0, 0, 0, 0, 1.20067, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  76.666667% { -webkit-transform: matrix3d(1.19946, 0, 0, 0, 0, 1.20048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19946, 0, 0, 0, 0, 1.20048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  78.333333% { -webkit-transform: matrix3d(1.19965, 0, 0, 0, 0, 1.20016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19965, 0, 0, 0, 0, 1.20016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  80% { -webkit-transform: matrix3d(1.19986, 0, 0, 0, 0, 1.19986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19986, 0, 0, 0, 0, 1.19986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  81.666667% { -webkit-transform: matrix3d(1.20004, 0, 0, 0, 0, 1.19967, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20004, 0, 0, 0, 0, 1.19967, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  83.333333% { -webkit-transform: matrix3d(1.20018, 0, 0, 0, 0, 1.19964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20018, 0, 0, 0, 0, 1.19964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  85% { -webkit-transform: matrix3d(1.20025, 0, 0, 0, 0, 1.19975, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20025, 0, 0, 0, 0, 1.19975, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  86.666667% { -webkit-transform: matrix3d(1.20027, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20027, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  88.333333% { -webkit-transform: matrix3d(1.20024, 0, 0, 0, 0, 1.20008, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20024, 0, 0, 0, 0, 1.20008, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  90% { -webkit-transform: matrix3d(1.20017, 0, 0, 0, 0, 1.20017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20017, 0, 0, 0, 0, 1.20017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  91.666667% { -webkit-transform: matrix3d(1.20009, 0, 0, 0, 0, 1.20019, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20009, 0, 0, 0, 0, 1.20019, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  93.333333% { -webkit-transform: matrix3d(1.20002, 0, 0, 0, 0, 1.20013, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20002, 0, 0, 0, 0, 1.20013, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  95% { -webkit-transform: matrix3d(1.19995, 0, 0, 0, 0, 1.20005, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19995, 0, 0, 0, 0, 1.20005, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  96.666667% { -webkit-transform: matrix3d(1.19991, 0, 0, 0, 0, 1.19996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19991, 0, 0, 0, 0, 1.19996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  98.333333% { -webkit-transform: matrix3d(1.1999, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1999, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { -webkit-transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
 }
 
 @keyframes animation { 
   0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  3.333333% { -webkit-transform: matrix3d(1.14545, 0, 0, 0, 0, 1.18602, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.14545, 0, 0, 0, 0, 1.18602, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  6.666667% { -webkit-transform: matrix3d(1.29842, 0, 0, 0, 0, 1.40691, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.29842, 0, 0, 0, 0, 1.40691, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  10% { -webkit-transform: matrix3d(1.42774, 0, 0, 0, 0, 1.57226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.42774, 0, 0, 0, 0, 1.57226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  13.333333% { -webkit-transform: matrix3d(1.51897, 0, 0, 0, 0, 1.64684, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.51897, 0, 0, 0, 0, 1.64684, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  16.666667% { -webkit-transform: matrix3d(1.57044, 0, 0, 0, 0, 1.64088, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.57044, 0, 0, 0, 0, 1.64088, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  20% { -webkit-transform: matrix3d(1.58847, 0, 0, 0, 0, 1.58847, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.58847, 0, 0, 0, 0, 1.58847, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  23.333333% { -webkit-transform: matrix3d(1.58303, 0, 0, 0, 0, 1.52623, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.58303, 0, 0, 0, 0, 1.52623, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  26.666667% { -webkit-transform: matrix3d(1.56445, 0, 0, 0, 0, 1.47964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.56445, 0, 0, 0, 0, 1.47964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  30% { -webkit-transform: matrix3d(1.54137, 0, 0, 0, 0, 1.45863, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.54137, 0, 0, 0, 0, 1.45863, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  33.333333% { -webkit-transform: matrix3d(1.51985, 0, 0, 0, 0, 1.4603, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.51985, 0, 0, 0, 0, 1.4603, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  36.666667% { -webkit-transform: matrix3d(1.50322, 0, 0, 0, 0, 1.47507, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50322, 0, 0, 0, 0, 1.47507, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  40% { -webkit-transform: matrix3d(1.49261, 0, 0, 0, 0, 1.49261, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49261, 0, 0, 0, 0, 1.49261, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  43.333333% { -webkit-transform: matrix3d(1.48758, 0, 0, 0, 0, 1.50574, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.48758, 0, 0, 0, 0, 1.50574, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  46.666667% { -webkit-transform: matrix3d(1.48684, 0, 0, 0, 0, 1.51166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.48684, 0, 0, 0, 0, 1.51166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  50% { -webkit-transform: matrix3d(1.48881, 0, 0, 0, 0, 1.51119, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.48881, 0, 0, 0, 0, 1.51119, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  53.333333% { -webkit-transform: matrix3d(1.49207, 0, 0, 0, 0, 1.50702, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49207, 0, 0, 0, 0, 1.50702, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  56.666667% { -webkit-transform: matrix3d(1.49549, 0, 0, 0, 0, 1.50208, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49549, 0, 0, 0, 0, 1.50208, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  60% { -webkit-transform: matrix3d(1.49838, 0, 0, 0, 0, 1.49838, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49838, 0, 0, 0, 0, 1.49838, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  63.333333% { -webkit-transform: matrix3d(1.50042, 0, 0, 0, 0, 1.49672, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50042, 0, 0, 0, 0, 1.49672, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  66.666667% { -webkit-transform: matrix3d(1.50158, 0, 0, 0, 0, 1.49685, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50158, 0, 0, 0, 0, 1.49685, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  70% { -webkit-transform: matrix3d(1.50198, 0, 0, 0, 0, 1.49802, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50198, 0, 0, 0, 0, 1.49802, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  73.333333% { -webkit-transform: matrix3d(1.50186, 0, 0, 0, 0, 1.49941, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50186, 0, 0, 0, 0, 1.49941, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  76.666667% { -webkit-transform: matrix3d(1.50144, 0, 0, 0, 0, 1.50046, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50144, 0, 0, 0, 0, 1.50046, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  80% { -webkit-transform: matrix3d(1.50093, 0, 0, 0, 0, 1.50093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50093, 0, 0, 0, 0, 1.50093, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  83.333333% { -webkit-transform: matrix3d(1.50044, 0, 0, 0, 0, 1.50089, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50044, 0, 0, 0, 0, 1.50089, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  86.666667% { -webkit-transform: matrix3d(1.50007, 0, 0, 0, 0, 1.50056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.50007, 0, 0, 0, 0, 1.50056, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  90% { -webkit-transform: matrix3d(1.49983, 0, 0, 0, 0, 1.50017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49983, 0, 0, 0, 0, 1.50017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  93.333333% { -webkit-transform: matrix3d(1.49972, 0, 0, 0, 0, 1.49987, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49972, 0, 0, 0, 0, 1.49987, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  96.666667% { -webkit-transform: matrix3d(1.49971, 0, 0, 0, 0, 1.49974, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.49971, 0, 0, 0, 0, 1.49974, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
-  100% { -webkit-transform: matrix3d(1.5, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.5, 0, 0, 0, 0, 1.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
+  1.666667% { -webkit-transform: matrix3d(1.03903, 0, 0, 0, 0, 1.05745, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.03903, 0, 0, 0, 0, 1.05745, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  3.333333% { -webkit-transform: matrix3d(1.09612, 0, 0, 0, 0, 1.15203, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.09612, 0, 0, 0, 0, 1.15203, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  5% { -webkit-transform: matrix3d(1.15774, 0, 0, 0, 0, 1.24226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.15774, 0, 0, 0, 0, 1.24226, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  6.666667% { -webkit-transform: matrix3d(1.2126, 0, 0, 0, 0, 1.29749, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2126, 0, 0, 0, 0, 1.29749, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  8.333333% { -webkit-transform: matrix3d(1.25308, 0, 0, 0, 0, 1.30616, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.25308, 0, 0, 0, 0, 1.30616, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  10% { -webkit-transform: matrix3d(1.27567, 0, 0, 0, 0, 1.27567, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.27567, 0, 0, 0, 0, 1.27567, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  11.666667% { -webkit-transform: matrix3d(1.2806, 0, 0, 0, 0, 1.22546, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2806, 0, 0, 0, 0, 1.22546, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  13.333333% { -webkit-transform: matrix3d(1.27101, 0, 0, 0, 0, 1.17756, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.27101, 0, 0, 0, 0, 1.17756, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  15% { -webkit-transform: matrix3d(1.25175, 0, 0, 0, 0, 1.14825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.25175, 0, 0, 0, 0, 1.14825, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  16.666667% { -webkit-transform: matrix3d(1.22818, 0, 0, 0, 0, 1.14365, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.22818, 0, 0, 0, 0, 1.14365, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  18.333333% { -webkit-transform: matrix3d(1.20519, 0, 0, 0, 0, 1.15983, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20519, 0, 0, 0, 0, 1.15983, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  20% { -webkit-transform: matrix3d(1.18648, 0, 0, 0, 0, 1.18648, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.18648, 0, 0, 0, 0, 1.18648, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  21.666667% { -webkit-transform: matrix3d(1.17421, 0, 0, 0, 0, 1.21191, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.17421, 0, 0, 0, 0, 1.21191, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  23.333333% { -webkit-transform: matrix3d(1.16898, 0, 0, 0, 0, 1.22747, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.16898, 0, 0, 0, 0, 1.22747, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  25% { -webkit-transform: matrix3d(1.17009, 0, 0, 0, 0, 1.22991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.17009, 0, 0, 0, 0, 1.22991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  26.666667% { -webkit-transform: matrix3d(1.17592, 0, 0, 0, 0, 1.22132, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.17592, 0, 0, 0, 0, 1.22132, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  28.333333% { -webkit-transform: matrix3d(1.18446, 0, 0, 0, 0, 1.20718, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.18446, 0, 0, 0, 0, 1.20718, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  30% { -webkit-transform: matrix3d(1.19368, 0, 0, 0, 0, 1.19368, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19368, 0, 0, 0, 0, 1.19368, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  31.666667% { -webkit-transform: matrix3d(1.20188, 0, 0, 0, 0, 1.18542, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20188, 0, 0, 0, 0, 1.18542, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  33.333333% { -webkit-transform: matrix3d(1.20794, 0, 0, 0, 0, 1.18412, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20794, 0, 0, 0, 0, 1.18412, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  35% { -webkit-transform: matrix3d(1.21132, 0, 0, 0, 0, 1.18868, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.21132, 0, 0, 0, 0, 1.18868, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  36.666667% { -webkit-transform: matrix3d(1.21206, 0, 0, 0, 0, 1.19619, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.21206, 0, 0, 0, 0, 1.19619, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  38.333333% { -webkit-transform: matrix3d(1.21062, 0, 0, 0, 0, 1.20336, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.21062, 0, 0, 0, 0, 1.20336, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  40% { -webkit-transform: matrix3d(1.20774, 0, 0, 0, 0, 1.20774, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20774, 0, 0, 0, 0, 1.20774, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  41.666667% { -webkit-transform: matrix3d(1.20421, 0, 0, 0, 0, 1.20843, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20421, 0, 0, 0, 0, 1.20843, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  43.333333% { -webkit-transform: matrix3d(1.20078, 0, 0, 0, 0, 1.20601, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20078, 0, 0, 0, 0, 1.20601, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  45% { -webkit-transform: matrix3d(1.19798, 0, 0, 0, 0, 1.20202, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19798, 0, 0, 0, 0, 1.20202, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  46.666667% { -webkit-transform: matrix3d(1.19614, 0, 0, 0, 0, 1.19822, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19614, 0, 0, 0, 0, 1.19822, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  48.333333% { -webkit-transform: matrix3d(1.19536, 0, 0, 0, 0, 1.19589, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19536, 0, 0, 0, 0, 1.19589, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  50% { -webkit-transform: matrix3d(1.19553, 0, 0, 0, 0, 1.19553, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19553, 0, 0, 0, 0, 1.19553, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  51.666667% { -webkit-transform: matrix3d(1.1964, 0, 0, 0, 0, 1.19681, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1964, 0, 0, 0, 0, 1.19681, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  53.333333% { -webkit-transform: matrix3d(1.19768, 0, 0, 0, 0, 1.19893, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19768, 0, 0, 0, 0, 1.19893, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  55% { -webkit-transform: matrix3d(1.19905, 0, 0, 0, 0, 1.20095, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19905, 0, 0, 0, 0, 1.20095, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  56.666667% { -webkit-transform: matrix3d(1.20028, 0, 0, 0, 0, 1.20218, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20028, 0, 0, 0, 0, 1.20218, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  58.333333% { -webkit-transform: matrix3d(1.20119, 0, 0, 0, 0, 1.20237, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20119, 0, 0, 0, 0, 1.20237, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  60% { -webkit-transform: matrix3d(1.20169, 0, 0, 0, 0, 1.20169, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20169, 0, 0, 0, 0, 1.20169, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  61.666667% { -webkit-transform: matrix3d(1.2018, 0, 0, 0, 0, 1.20057, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2018, 0, 0, 0, 0, 1.20057, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  63.333333% { -webkit-transform: matrix3d(1.20159, 0, 0, 0, 0, 1.1995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20159, 0, 0, 0, 0, 1.1995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  65% { -webkit-transform: matrix3d(1.20116, 0, 0, 0, 0, 1.19884, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20116, 0, 0, 0, 0, 1.19884, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  66.666667% { -webkit-transform: matrix3d(1.20063, 0, 0, 0, 0, 1.19874, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20063, 0, 0, 0, 0, 1.19874, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  68.333333% { -webkit-transform: matrix3d(1.20012, 0, 0, 0, 0, 1.1991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20012, 0, 0, 0, 0, 1.1991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  70% { -webkit-transform: matrix3d(1.1997, 0, 0, 0, 0, 1.1997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1997, 0, 0, 0, 0, 1.1997, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  71.666667% { -webkit-transform: matrix3d(1.19942, 0, 0, 0, 0, 1.20027, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19942, 0, 0, 0, 0, 1.20027, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  73.333333% { -webkit-transform: matrix3d(1.19931, 0, 0, 0, 0, 1.20061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19931, 0, 0, 0, 0, 1.20061, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  75% { -webkit-transform: matrix3d(1.19933, 0, 0, 0, 0, 1.20067, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19933, 0, 0, 0, 0, 1.20067, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  76.666667% { -webkit-transform: matrix3d(1.19946, 0, 0, 0, 0, 1.20048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19946, 0, 0, 0, 0, 1.20048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  78.333333% { -webkit-transform: matrix3d(1.19965, 0, 0, 0, 0, 1.20016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19965, 0, 0, 0, 0, 1.20016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  80% { -webkit-transform: matrix3d(1.19986, 0, 0, 0, 0, 1.19986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19986, 0, 0, 0, 0, 1.19986, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  81.666667% { -webkit-transform: matrix3d(1.20004, 0, 0, 0, 0, 1.19967, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20004, 0, 0, 0, 0, 1.19967, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  83.333333% { -webkit-transform: matrix3d(1.20018, 0, 0, 0, 0, 1.19964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20018, 0, 0, 0, 0, 1.19964, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  85% { -webkit-transform: matrix3d(1.20025, 0, 0, 0, 0, 1.19975, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20025, 0, 0, 0, 0, 1.19975, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  86.666667% { -webkit-transform: matrix3d(1.20027, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20027, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  88.333333% { -webkit-transform: matrix3d(1.20024, 0, 0, 0, 0, 1.20008, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20024, 0, 0, 0, 0, 1.20008, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  90% { -webkit-transform: matrix3d(1.20017, 0, 0, 0, 0, 1.20017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20017, 0, 0, 0, 0, 1.20017, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  91.666667% { -webkit-transform: matrix3d(1.20009, 0, 0, 0, 0, 1.20019, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20009, 0, 0, 0, 0, 1.20019, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  93.333333% { -webkit-transform: matrix3d(1.20002, 0, 0, 0, 0, 1.20013, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.20002, 0, 0, 0, 0, 1.20013, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  95% { -webkit-transform: matrix3d(1.19995, 0, 0, 0, 0, 1.20005, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19995, 0, 0, 0, 0, 1.20005, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  96.666667% { -webkit-transform: matrix3d(1.19991, 0, 0, 0, 0, 1.19996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.19991, 0, 0, 0, 0, 1.19996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  98.333333% { -webkit-transform: matrix3d(1.1999, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.1999, 0, 0, 0, 0, 1.19991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
+  100% { -webkit-transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1.2, 0, 0, 0, 0, 1.2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); } 
 }
 

@@ -29,7 +29,7 @@
 <body>
 
 <!-- This div contains the background graphic with the border and curved edges -->
-  <div id="backgroundBox"></div>
+  <div class="backgroundBox"></div>
 
 <!-- This div contains the controller for all the AngularJs logic -->
   <div ng-controller="TTTController">
@@ -41,7 +41,7 @@
     </div>
     
 <!-- This is the game over board with the reset button. Note the ng-hide directive here. This is tricky bit of code that says that when the playbutton is clicked, FBmyVar gets toggled in the JS, which make this visible.  --> 
-    <div class="gameOverContainer" ng-class="{xWinBorder: gameContainer.FBwhoWon == 'X', oWinBorder: gameContainer.FBwhoWon == 'O', closeCont: gameContainer.FBmyVar, openCont: gameContainer.FBmyVar}">
+    <div class="gameOverContainer" ng-class="{xWinBorder: gameContainer.FBwhoWon == 'X', oWinBorder: gameContainer.FBwhoWon == 'O', closeCont: gameContainer.FBmyVar, openCont: !gameContainer.FBmyVar}">
       
       <p class="headlineClass" ng-class="{xWins: gameContainer.FBwhoWonV == 'X', oWins: gameContainer.FBwhoWonV == 'O', tWins: gameContainer.FBwhoWonV == 'T'}">{{gameContainer.FBstatusHeadline}}</p>
 
