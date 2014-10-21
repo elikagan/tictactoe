@@ -8,6 +8,7 @@ body{
   letter-spacing: 3px;
   font-size: 30px;
   font-family: 'futura-pt', sans-serif;
+  font-weight: 500;
   vertical-align: middle;
   text-align: center;
   color: white;
@@ -31,6 +32,7 @@ body{
 .ticTacToe{
   font-size: 50px;
   font-family: 'futura-pt', sans-serif;
+  font-weight: 500;
   color: #755b46;
 }
 
@@ -83,6 +85,7 @@ body{
   top: -84px;
   font-size: 100px;
   font-family: 'futura-pt', sans-serif;
+  font-weight: 700;
   color: #755b46;
   text-align: center;
   letter-spacing: 5px;
@@ -138,7 +141,8 @@ body{
   font-size: 26px;
   color: white;
   font-family: 'futura-pt', sans-serif;
-  letter-spacing: 0px;
+  font-weight: 500;
+  letter-spacing: 2px;
 }
 
 
@@ -179,7 +183,7 @@ body{
 	border: 14px solid #e4b484;
   box-shadow: 0px 0px 0px 10px #ba5b36;
   background-image: url('x_full_peach.png');
-  transition: all .16s ease-in-out;
+  transition: all .1s ease-in-out;
 }
 
 /*Sets style of unclicked tiles when it's blues turn. Mostly what we want here is the hover state. If no hover is detected, the tile is blank*/
@@ -201,7 +205,7 @@ body{
   -webkit-transform: scale(1.2,1.2);*/
   -webkit-animation: animation 1000ms linear both;
   animation: animation 1000ms linear both;
-	transition: all .16s ease-in-out;
+	transition: all .1s ease-in-out;
 	background-color: #77896d;
 	border: 14px solid #e4b484;
   box-shadow: 0px 0px 0px 10px #77896d;
@@ -279,6 +283,7 @@ body{
 .winTally{
   font-size: 26px;
   font-family: 'futura-pt', sans-serif;
+  font-weight: 500;
   color: #755b46;
 
 }
@@ -309,6 +314,7 @@ body{
   top: 3%; left: 3%; bottom: 0; right: 0;
   font-size: 20px;
   font-family: 'futura-pt', sans-serif;
+  font-weight: 500;  
   color: #efbb81;
   margin-top: 10px;
 }
@@ -332,6 +338,7 @@ body{
   top: 3%; left: 3%; bottom: 0; right: 0;
   font-size: 20px;
   font-family: 'futura-pt', sans-serif;
+  font-weight: 500;
   color: #efbb81;
   margin-top: 10px;
 }

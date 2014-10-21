@@ -1,0 +1,277 @@
+<!doctype HTML>
+<html>
+<head>
+<title>Tic Tac Toe</title>
+  <link type="text/css" rel="stylesheet" href="style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div id="logo"></div>
+<div id="headline"></div>
+
+		<div id="board">
+			<div id="tile1" class="tile"></div>
+			<div id="tile2" class="tile"></div>
+			<div id="tile3" class="tile"></div>
+			<div id="tile4" class="tile"></div>
+			<div id="tile5" class="tile"></div>
+			<div id="tile6" class="tile"></div>
+			<div id="tile7" class="tile"></div>
+			<div id="tile8" class="tile"></div>
+			<div id="tile9" class="tile"></div>
+		</div>
+
+
+<script>
+var counter = 1;
+var userArray = [];
+var boardArray = [1, 2,3,4, 5, 6,7,8, 9];
+var cpuArray = [];
+var winArray = [7776, 24883200000, 32520160641024, 17210368, 3276800000, 111577100832, 184528125, 12762815625];
+
+
+var checkUser123 = function() {
+	for (var i = userArray.length; i>0; i--) {
+		if(userArray[i] === 1){
+		userScore = userScore + 1;
+		}
+
+		if(userArray[i] === 2){
+		userScore = userScore + 1;
+		}
+
+		if(userArray[i] === 3){
+		userScore = userScore + 1;
+		}
+
+	}
+
+	if (userScore === 3){
+		document.getElementById("headline").innerHTML = "You Win!!!";
+	}
+
+}
+
+
+
+
+
+
+
+/*var checkUserWin = function(){
+	var sum=1;
+	for (var i=0; i<userArray.length; i++){
+	sum = sum * userArray[i];
+	}
+	if( sum%winArray[0] == 0 || sum%winArray[1] == 0 || sum%winArray[2] == 0 || sum%winArray[3] == 0 || sum%winArray[4] == 0 || sum%winArray[5] == 0 || sum%winArray[6] == 0  || sum%winArray[7] == 0 || sum%winArray[8] == 0) {
+		document.getElementById("headline").innerHTML = "You Win!!!";}
+		else {
+			sum = 0;
+		}
+
+	}
+
+
+var checkCPUWin = function(){
+	var sumCPU=1;
+	for (var i=0; i<cpuArray.length; i++){
+	sumCPU = sumCPU * cpuArray[i];
+	}
+	if( sumCPU%winArray[0] == 0 || sumCPU%winArray[1] == 0|| sumCPU%winArray[2] == 0|| sumCPU%winArray[3] == 0 || sumCPU%winArray[4] == 0|| sumCPU%winArray[5] == 0 || sumCPU%winArray[6] == 0  || sumCPU%winArray[7] ==0 || sumCPU%winArray[8] ==0) {
+		document.getElementById("headline").innerHTML = "You LOSE!!!";}
+	else {
+		sumCPU = 0;
+	}
+
+	}
+
+
+*/
+
+
+
+///
+
+document.getElementById("tile1").addEventListener("click", myClick1);
+	
+	function myClick1() {
+
+		if(counter%2===0){
+		document.getElementById("tile1").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[0]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile1").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[0]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile2").addEventListener("click", myClick2);
+	
+	function myClick2() {
+
+		if(counter%2===0){
+		document.getElementById("tile2").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[1]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile2").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[1]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile3").addEventListener("click", myClick3);
+	
+	function myClick3() {
+
+		if(counter%2===0){
+		document.getElementById("tile3").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[2]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile3").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[2]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile4").addEventListener("click", myClick4);
+	
+	function myClick4() {
+
+		if(counter%2===0){
+		document.getElementById("tile4").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[3]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile4").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[3]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile5").addEventListener("click", myClick5);
+	
+	function myClick5() {
+
+		if(counter%2===0){
+		document.getElementById("tile5").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[4]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile5").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[4]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile6").addEventListener("click", myClick6);
+	
+	function myClick6() {
+
+		if(counter%2===0){
+		document.getElementById("tile6").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[5]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile6").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[5]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile7").addEventListener("click", myClick7);
+	
+	function myClick7() {
+
+		if(counter%2===0){
+		document.getElementById("tile7").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[6]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile7").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[6]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile8").addEventListener("click", myClick8);
+	
+	function myClick8() {
+
+		if(counter%2===0){
+		document.getElementById("tile8").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[7]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile8").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[7]);
+		checkUser123();
+		}
+	}
+
+///
+
+document.getElementById("tile9").addEventListener("click", myClick9);
+	
+	function myClick9() {
+
+		if(counter%2===0){
+		document.getElementById("tile9").innerHTML = "O";
+		counter = counter+1;
+		cpuArray.push(boardArray[8]);
+		checkUser123();
+		}
+	
+		else{document.getElementById("tile9").innerHTML = "X";
+		counter = counter+1;
+		userArray.push(boardArray[8]);
+		checkUser123();
+		}
+	}
+
+</script>
+
+
+</body>

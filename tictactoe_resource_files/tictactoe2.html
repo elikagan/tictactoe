@@ -1,0 +1,529 @@
+<!doctype HTML>
+<html>
+<head>
+<title>Tic Tac Toe</title>
+  <link type="text/css" rel="stylesheet" href="style.css" />
+  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<!-- <div id="logo"></div> -->
+<div id="headline"></div>
+<div id="playAgain">Play again!</div>
+
+
+		<div id="board">
+			<div id="tileDiv1" class="tile"></div>
+			<div id="tileDiv2" class="tile"></div>
+			<div id="tileDiv3" class="tile"></div>
+			<div id="tileDiv4" class="tile"></div>
+			<div id="tileDiv5" class="tile"></div>
+			<div id="tileDiv6" class="tile"></div>
+			<div id="tileDiv7" class="tile"></div>
+			<div id="tileDiv8" class="tile"></div>
+			<div id="tileDiv9" class="tile"></div>
+		</div>
+
+
+<script>
+
+
+
+///////THE GAME ITSELF
+
+var counter = 2;
+var tile1 = 0;
+var tile2 = 0;
+var tile3 = 0;
+var tile4 = 0;
+var tile5 = 0;
+var tile6 = 0;
+var tile7 = 0;
+var tile8 = 0;
+var tile9 = 0;
+var gameOver = 0;
+
+///////WIN CONDITIONS
+var checkUserWin = function() {
+
+ if ((tile1===1 && tile2===1 && tile3===1) || (tile4===1 && tile5===1 && tile6===1) || (tile7===1 && tile8===1 && tile9===1) || (tile1===1 && tile4===1 && tile7===1) || (tile2===1 && tile5===1 && tile8===1) || (tile3===1 &&tile6===1 && tile9===1) || (tile1===1 && tile5===1 && tile9===1) || (tile7===1 && tile5===1 && tile3===1)) {
+		gameOver = 1;
+		document.getElementById("board").style.opacity="0.1";
+		document.getElementById("headline").innerHTML = "X's WIN!!!";
+		document.getElementById("playAgain").style.visibility="visible";
+	}	
+}
+
+var checkCpuWin = function() {
+if ((tile1===2 && tile2===2 && tile3===2) || (tile4===2 && tile5===2 && tile6===2) || (tile7===2 && tile8===2 && tile9===2) || (tile1===2 && tile4===2 && tile7===2) || (tile2===2 && tile5===2 && tile8===2)  || (tile3===2 &&tile6===2 && tile9===2 )|| (tile1===2 && tile5===2 && tile9===2 )||(tile7===2 && tile5===2 && tile3===2 )) {
+		gameOver = 1;
+		document.getElementById("board").style.opacity="0.1";
+		document.getElementById("headline").innerHTML = "O's WIN!!!";
+		document.getElementById("playAgain").style.visibility="visible";
+	}	
+}
+
+var checkTie = function(){
+	if(counter == 11 && gameOver==0){
+		document.getElementById("board").style.opacity="0.3";
+		document.getElementById("headline").innerHTML = "It's a tie!";
+		document.getElementById("playAgain").style.visibility="visible";
+	}
+}
+
+
+///TILE 1 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv1").addEventListener("click", click1);
+	
+function click1() {
+if(tile1===0 && counter%2==0 && gameOver != 1){
+	document.getElementById("tileDiv1").innerHTML = "X";
+	tile1 = 1;
+	counter = counter +1;
+	tile1 = 1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+else if (tile1===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv1").innerHTML = "O";
+	tile1 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+///TILE 2 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv2").addEventListener("click", click2);
+	
+function click2() {
+if(tile2===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv2").innerHTML = "X";
+	tile2 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile2===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv2").innerHTML = "O";
+	tile2 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+///TILE 3 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv3").addEventListener("click", click3);
+	
+function click3() {
+if(tile3===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv3").innerHTML = "X";
+	tile3 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile3===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv3").innerHTML = "O";
+	tile3 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+///TILE 4 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv4").addEventListener("click", click4);
+	
+function click4() {
+if(tile4===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv4").innerHTML = "X";
+	tile4 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile4===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv4").innerHTML = "O";
+	tile4 = 2;
+	counter = counter +1;
+	checkTie();
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+///TILE 5 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv5").addEventListener("click", click5);
+	
+function click5() {
+if(tile5===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv5").innerHTML = "X";
+	tile5 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile5===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv5").innerHTML = "O";
+	tile5 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+///TILE 6 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv6").addEventListener("click", click6);
+	
+function click6() {
+if(tile6===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv6").innerHTML = "X";
+	tile6 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile6===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv6").innerHTML = "O";
+	tile6 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+///TILE 7 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv7").addEventListener("click", click7);
+	
+function click7() {
+if(tile7===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv7").innerHTML = "X";
+	tile7 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile7===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv7").innerHTML = "O";
+	tile7 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+///TILE 8 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv8").addEventListener("click", click8);
+	
+function click8() {
+if(tile8===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv8").innerHTML = "X";
+	tile8 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile8===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv8").innerHTML = "O";
+	tile8 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+
+///TILE 9 CLICK INSTRUCTIONS
+
+document.getElementById("tileDiv9").addEventListener("click", click9);
+	
+function click9() {
+if(tile9===0 && counter%2==0  && gameOver != 1){
+	document.getElementById("tileDiv9").innerHTML = "X";
+	tile9 = 1;
+	counter = counter +1;
+	checkUserWin();
+	checkTie();
+
+	}
+
+	else if (tile9===0 && counter%2!==0 && gameOver != 1){
+	document.getElementById("tileDiv9").innerHTML = "O";
+	tile9 = 2;
+	counter = counter +1;
+	checkCpuWin();
+	checkTie();
+
+	}
+}
+
+
+//HOVERS
+
+/////TILE 1 MOUSEOVER + OUT
+
+document.getElementById("tileDiv1").addEventListener("mouseover", myMouseOverTile1);
+
+function myMouseOverTile1() {
+	if(counter%2==0 && gameOver != 1 && tile1 ==0){
+	document.getElementById("tileDiv1").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile1 ==0){
+	document.getElementById("tileDiv1").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv1").addEventListener("mouseout", myMouseOutTile1);
+
+function myMouseOutTile1() {
+	if(gameOver != 1 && tile1 == 0){
+	document.getElementById("tileDiv1").innerHTML =" ";
+	}
+}
+
+/////TILE 2 MOUSEOVER + OUT
+
+document.getElementById("tileDiv2").addEventListener("mouseover", myMouseOverTile2);
+
+function myMouseOverTile2() {
+	if(counter%2==0 && gameOver != 1 && tile2 ==0){
+	document.getElementById("tileDiv2").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile2 ==0){
+	document.getElementById("tileDiv2").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv2").addEventListener("mouseout", myMouseOutTile2);
+
+function myMouseOutTile2() {
+	if(gameOver != 1 && tile2 ==0){
+	document.getElementById("tileDiv2").innerHTML =" ";
+	}
+}
+
+/////TILE 3 MOUSEOVER + OUT
+
+document.getElementById("tileDiv3").addEventListener("mouseover", myMouseOverTile3);
+
+function myMouseOverTile3() {
+	if(counter%2==0 && gameOver != 1 && tile3 ==0){
+	document.getElementById("tileDiv3").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile3 ==0){
+	document.getElementById("tileDiv3").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv3").addEventListener("mouseout", myMouseOutTile3);
+
+function myMouseOutTile3() {
+	if(gameOver != 1 && tile3 ==0){
+	document.getElementById("tileDiv3").innerHTML =" ";
+	}
+} 
+
+/////TILE 4 MOUSEOVER + OUT
+
+document.getElementById("tileDiv4").addEventListener("mouseover", myMouseOverTile4);
+
+function myMouseOverTile4() {
+	if(counter%2==0 && gameOver != 1 && tile4 ==0){
+	document.getElementById("tileDiv4").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile4 ==0){
+	document.getElementById("tileDiv4").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv4").addEventListener("mouseout", myMouseOutTile4);
+
+function myMouseOutTile4() {
+	if(gameOver != 1 && tile4 ==0){
+	document.getElementById("tileDiv4").innerHTML =" ";
+	}
+}
+
+/////TILE 5 MOUSEOVER + OUT
+
+document.getElementById("tileDiv5").addEventListener("mouseover", myMouseOverTile5);
+
+function myMouseOverTile5() {
+	if(counter%2==0 && gameOver != 1 && tile5 ==0){
+	document.getElementById("tileDiv5").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile5 ==0){
+	document.getElementById("tileDiv5").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv5").addEventListener("mouseout", myMouseOutTile5);
+
+function myMouseOutTile5() {
+	if(gameOver != 1 && tile5 ==0){
+	document.getElementById("tileDiv5").innerHTML =" ";
+	}
+}
+
+/////TILE 6 MOUSEOVER + OUT
+
+document.getElementById("tileDiv6").addEventListener("mouseover", myMouseOverTile6);
+
+function myMouseOverTile6() {
+	if(counter%2==0 && gameOver != 1 && tile6 ==0){
+	document.getElementById("tileDiv6").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile6 ==0){
+	document.getElementById("tileDiv6").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv6").addEventListener("mouseout", myMouseOutTile6);
+
+function myMouseOutTile6() {
+	if(gameOver != 1 && tile6 ==0){
+	document.getElementById("tileDiv6").innerHTML =" ";
+	}
+}
+
+/////TILE 7 MOUSEOVER + OUT
+
+document.getElementById("tileDiv7").addEventListener("mouseover", myMouseOverTile7);
+
+function myMouseOverTile7() {
+	if(counter%2==0 && gameOver != 1 && tile7 ==0){
+	document.getElementById("tileDiv7").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile7 ==0){
+	document.getElementById("tileDiv7").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv7").addEventListener("mouseout", myMouseOutTile7);
+
+function myMouseOutTile7() {
+	if(gameOver != 1 && tile7 ==0){
+	document.getElementById("tileDiv7").innerHTML =" ";
+	}
+}
+
+/////TILE 8 MOUSEOVER + OUT
+
+document.getElementById("tileDiv8").addEventListener("mouseover", myMouseOverTile8);
+
+function myMouseOverTile8() {
+	if(counter%2==0 && gameOver != 1 && tile8 ==0){
+	document.getElementById("tileDiv8").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile8 ==0){
+	document.getElementById("tileDiv8").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv8").addEventListener("mouseout", myMouseOutTile8);
+
+function myMouseOutTile8() {
+	if(gameOver != 1 && tile8 ==0){
+	document.getElementById("tileDiv8").innerHTML =" ";
+	}
+}
+
+/////TILE 9 MOUSEOVER + OUT
+
+document.getElementById("tileDiv9").addEventListener("mouseover", myMouseOverTile9);
+
+function myMouseOverTile9() {
+	if(counter%2==0 && gameOver != 1 && tile9 ==0){
+	document.getElementById("tileDiv9").innerHTML ="X";
+    }  		
+
+	if(counter%2!=0 && gameOver!=1 && tile9 ==0){
+	document.getElementById("tileDiv9").innerHTML ="O";
+	}
+}
+
+document.getElementById("tileDiv9").addEventListener("mouseout", myMouseOutTile9);
+
+function myMouseOutTile9() {
+	if(gameOver != 1 && tile9 ==0){
+	document.getElementById("tileDiv9").innerHTML =" ";
+	}
+}
+
+////RELOAD PAGE
+///TILE 9 CLICK INSTRUCTIONS
+
+document.getElementById("playAgain").addEventListener("click", resetAll);
+	
+function resetAll() {
+	counter = 2;
+	tile1 = 0;
+	tile2 = 0;
+	tile3 = 0;
+	tile4 = 0;
+	tile5 = 0;
+	tile6 = 0;
+	tile7 = 0;
+	tile8 = 0;
+	tile9 = 0;
+	gameOver = 0;
+	document.getElementById("playAgain").style.visibility="hidden";
+	document.getElementById("board").style.opacity="1";
+	document.getElementById("headline").innerHTML = " ";
+	document.getElementById("tileDiv1").innerHTML =" ";
+	document.getElementById("tileDiv2").innerHTML =" ";
+	document.getElementById("tileDiv3").innerHTML =" ";
+	document.getElementById("tileDiv4").innerHTML =" ";
+	document.getElementById("tileDiv5").innerHTML =" ";
+	document.getElementById("tileDiv6").innerHTML =" ";
+	document.getElementById("tileDiv7").innerHTML =" ";
+	document.getElementById("tileDiv8").innerHTML =" ";
+	document.getElementById("tileDiv9").innerHTML =" ";
+
+};
+
+</script>
+
+
+</body>
